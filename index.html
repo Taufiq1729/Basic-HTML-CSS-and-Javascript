@@ -1,43 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My First Webpage</title>
-  <link rel="stylesheet" href="style.css"> <!-- Linking CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Development Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to My First Webpage</h1>
-    <p>This is a simple webpage created with HTML, styled with CSS, and made interactive with JavaScript.</p>
-    <hr>
-  
-    <h2>About Me</h2>
-    <p>Hello! I’m learning how to build webpages using HTML, CSS, and JavaScript. </p>
-    <hr>
-  
-    <h2>My Favorite Image</h2>
-    <img src="./Images/myPhoto.jpeg" alt="My Photo">
-    <hr>
-  
-    <h2>Useful Link</h2>
-    <p>Check out <a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">MDN Web Docs</a> for learning web development.</p>
-    <hr>
-  
-    <h2>Click the Button</h2>
-    <button onclick="showMessage()">Click Me!</button>
-    <hr>
-    
-    <h2>Theme Switcher</h2>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <hr>
-  
-    <h2>Personalized Greeting</h2>
-    <input type="text" id="nameInput" placeholder="Enter your name">
-    <button onclick="greetUser()">Say Hello</button>
-    <p id="greetingMessage"></p>
-    <hr>
-  
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>WebDev Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#quiz" class="nav-link">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#weather" class="nav-link">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#carousel" class="nav-link">Carousel</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#todo" class="nav-link">To-Do</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="container">
+                <h1>Welcome to My Interactive Portfolio</h1>
+                <p>This is a comprehensive demonstration of HTML, CSS, and JavaScript skills including responsive design, API integration, interactive components, and dynamic content manipulation.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Interactive Quiz</h3>
+                        <p>Test your knowledge with dynamic questions</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h3>Weather API</h3>
+                        <p>Real-time weather data integration</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-images"></i>
+                        <h3>Image Carousel</h3>
+                        <p>Smooth image rotation and navigation</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-edit"></i>
+                        <h3>Contact Form</h3>
+                        <p>Interactive form with validation</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-tasks"></i>
+                        <h3>To-Do List</h3>
+                        <p>Dynamic task management</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Responsive Design</h3>
+                        <p>Works on all devices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="container">
+                <h2>Interactive Web Development Quiz</h2>
+                <p>Test your knowledge of HTML, CSS, and JavaScript with this interactive quiz!</p>
+                
+                <div class="quiz-container">
+                    <div id="quizStart" class="quiz-start">
+                        <h3>Ready to test your skills?</h3>
+                        <p>This quiz contains 10 questions about web development fundamentals.</p>
+                        <button id="startQuizBtn" class="quiz-btn primary">
+                            <i class="fas fa-play"></i>
+                            Start Quiz
+                        </button>
+                    </div>
+                    
+                    <div id="quizContent" class="quiz-content" style="display: none;">
+                        <div class="quiz-header">
+                            <div class="quiz-progress">
+                                <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                            </div>
+                            <div class="quiz-timer">
+                                <i class="fas fa-clock"></i>
+                                <span id="timer">60</span>s
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-question">
+                            <h3 id="questionText">Question text will appear here</h3>
+                            <div id="questionOptions" class="quiz-options">
+                                <!-- Options will be populated dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-navigation">
+                            <button id="prevBtn" class="quiz-btn secondary" disabled>
+                                <i class="fas fa-arrow-left"></i>
+                                Previous
+                            </button>
+                            <button id="nextBtn" class="quiz-btn primary">
+                                Next
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="quizResults" class="quiz-results" style="display: none;">
+                        <h3>Quiz Complete!</h3>
+                        <div class="results-summary">
+                            <div class="score-circle">
+                                <span id="finalScore">0</span>%
+                            </div>
+                            <p id="scoreMessage">Great job!</p>
+                        </div>
+                        <div class="results-details">
+                            <p>Correct Answers: <span id="correctAnswers">0</span> / <span id="totalAnswers">10</span></p>
+                            <p>Time Taken: <span id="timeTaken">0</span> seconds</p>
+                        </div>
+                        <button id="retakeQuizBtn" class="quiz-btn primary">
+                            <i class="fas fa-redo"></i>
+                            Take Quiz Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather API Section -->
+        <section id="weather" class="section">
+            <div class="container">
+                <h2>Real-Time Weather Data</h2>
+                <p>Enter a city name to get current weather information using a public API.</p>
+                
+                <div class="weather-container">
+                    <div class="weather-search">
+                        <input type="text" id="cityInput" placeholder="Enter city name (e.g., London, New York)">
+                        <button id="searchWeatherBtn" class="weather-btn">
+                            <i class="fas fa-search"></i>
+                            Get Weather
+                        </button>
+                    </div>
+                    
+                    <div id="weatherResult" class="weather-result" style="display: none;">
+                        <div class="weather-card">
+                            <div class="weather-header">
+                                <h3 id="weatherCity">City Name</h3>
+                                <p id="weatherDate">Date</p>
+                            </div>
+                            <div class="weather-main">
+                                <div class="weather-icon">
+                                    <i id="weatherIcon" class="fas fa-sun"></i>
+                                </div>
+                                <div class="weather-temp">
+                                    <span id="weatherTemperature">25</span>°C
+                                </div>
+                                <div class="weather-desc">
+                                    <p id="weatherDescription">Clear sky</p>
+                                </div>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-detail">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span>Feels like: <span id="weatherFeelsLike">25</span>°C</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-tint"></i>
+                                    <span>Humidity: <span id="weatherHumidity">60</span>%</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-wind"></i>
+                                    <span>Wind: <span id="weatherWind">5</span> km/h</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-eye"></i>
+                                    <span>Visibility: <span id="weatherVisibility">10</span> km</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="weatherError" class="weather-error" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p id="errorMessage">City not found. Please try again.</p>
+                    </div>
+                    
+                    <div id="weatherLoading" class="weather-loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading weather data...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Carousel Section -->
+        <section id="carousel" class="section">
+            <div class="container">
+                <h2>Interactive Image Carousel</h2>
+                <p>Navigate through images with smooth transitions and interactive controls.</p>
+                
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-slide">
+                                <img src="./Images/myPhoto.jpeg" alt="My Photo">
+                                <div class="slide-caption">
+                                    <h3>My Photo</h3>
+                                    <p>Professional headshot</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://picsum.photos/800/400?random=1" alt="Nature Scene 1">
+                                <div class="slide-caption">
+                                    <h3>Nature Beauty</h3>
+                                    <p>Scenic landscape photography</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://picsum.photos/800/400?random=2" alt="Nature Scene 2">
+                                <div class="slide-caption">
+                                    <h3>Mountain View</h3>
+                                    <p>Breathtaking mountain scenery</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://picsum.photos/800/400?random=3" alt="Nature Scene 3">
+                                <div class="slide-caption">
+                                    <h3>Ocean Waves</h3>
+                                    <p>Peaceful ocean landscape</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://picsum.photos/800/400?random=4" alt="Nature Scene 4">
+                                <div class="slide-caption">
+                                    <h3>Forest Path</h3>
+                                    <p>Serene forest walkway</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" id="carouselPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next" id="carouselNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Indicators will be generated dynamically -->
+                    </div>
+                    
+                    <div class="carousel-features">
+                        <button class="feature-btn" id="autoPlayBtn">
+                            <i class="fas fa-play"></i>
+                            Auto Play
+                        </button>
+                        <button class="feature-btn" id="fullscreenBtn">
+                            <i class="fas fa-expand"></i>
+                            Fullscreen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact Form</h2>
+                <p>Fill out the form below to get in touch. All fields are validated for proper format.</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="project">Project Request</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to newsletter
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+                
+                <div id="formSuccess" class="success-message" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Thank you! Your message has been sent successfully.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- To-Do List Section -->
+        <section id="todo" class="section">
+            <div class="container">
+                <h2>Dynamic To-Do List</h2>
+                <p>Add, complete, and remove tasks dynamically. Your tasks are saved locally!</p>
+                
+                <div class="todo-container">
+                    <div class="todo-input-group">
+                        <input type="text" id="todoInput" placeholder="Enter a new task...">
+                        <button id="addTodoBtn" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="todo-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                    
+                    <ul id="todoList" class="todo-list">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                    
+                    <div class="todo-stats">
+                        <span id="taskCount">0 tasks remaining</span>
+                        <button id="clearCompleted" class="clear-btn">Clear Completed</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <h2>Responsive Image Gallery</h2>
+                <p>Click on images to view them in full size. Add your own images using the upload feature!</p>
+                
+                <div class="gallery-controls">
+                    <input type="file" id="imageUpload" accept="image/*" multiple>
+                    <label for="imageUpload" class="upload-btn">
+                        <i class="fas fa-upload"></i>
+                        Upload Images
+                    </label>
+                </div>
+                
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item">
+                        <img src="./Images/myPhoto.jpeg" alt="My Photo" onclick="openModal(this.src)">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <button class="gallery-delete" onclick="removeImage(this)" aria-label="Delete image">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <!-- More images will be added dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
     <script src="script.js"></script>
-  </body>
-  
+</body>
 </html>
